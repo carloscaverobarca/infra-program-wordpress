@@ -12,8 +12,10 @@
 
 ## How it works
 
-1) Create an ssh credentials `ssh-keygen -y -f mykeytest.pem > mykeytest.pub` and copy them in `~/.ssh/` in your laptop (adapt to your needs)
-2) Login AWS
+1) Create the ssh credentials: 
+   - `ssh-keygen -y -f mykeytest.pem > mykeytest.pub`
+   - Copy them in `~/.ssh/` in your laptop (adapt to your needs)
+2) Get the token using AWS CLI
 3) `terraform init` to configure the project
 4) `terraform plan` to prepare the provisioning
 5) `terraform apply` to create the EC2 instance (VPC, SSH Key, Security Group, etc) and run the Ansible Playbook on it to provision Wordpress
