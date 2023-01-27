@@ -13,8 +13,8 @@ variable "instance" {
 }
 
 variable "private_key_aws_path" {
-    type = string
-    default = "~/.ssh/mykeytest.pem"
+  type = string
+  default = "~/.ssh/mykeytest.pem"
 }
 
 variable "ansible_user" {
