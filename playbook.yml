@@ -1,0 +1,48 @@
+- hosts: all
+
+  become: true
+  gather_facts: False
+
+  pre_tasks:
+    - name: Install python for Ansible
+      raw: test -e /usr/bin/python || (apt -y update && apt install -y python2-minimal)
+
+    - name: Update apt repos
+      apt:
+        update_cache: yes
+
+    - name: Installing LEMP
+      apt:
+        name: "{{ packages }}"
+      vars:
+        packages:
+          - nginx
+          - mysql-server
+          - php-fpm
+          - php-curl
+          - php-gd
+          - php-intl
+          - php-mbstring
+          - php-soap
+          - php-xml
+          - php-xmlrpc
+          - php-zip
+          - php-mysql
+          - php-imagick
+          - mc
+
+    - name: Copy Nginx config to remote
+      copy:
+        src: default.conf
+        dest: /etc/nginx/sites-available/default
+        backup: true
+
+    - name: Copy install script to remote
+      copy:
+        src: install.sh
+        dest: /root/install.sh
+        mode: "u=rwx"
+
+    - name: Execute install script
+      become_user: root
+      command: /root/install.sh
