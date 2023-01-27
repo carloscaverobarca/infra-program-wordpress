@@ -1,6 +1,6 @@
 # infra-program-wordpress
 
-[Wordpress](https://wordpress.com/) v5.6 automatically provisioned in an EC2 instance with Terraform and Ansible
+Automatically provision [Wordpress](https://wordpress.com/) v5.6 in an EC2 instance with Terraform and Ansible
 
 ## Prerequisites
 
